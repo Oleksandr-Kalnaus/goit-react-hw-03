@@ -1,14 +1,23 @@
 import PropTypes from "prop-types";
+import { Formik, Form, Field } from "formik";
 import styles from "./SearchBox.module.css";
 
 const SearchBox = ({ searchValue, handleSearchChange }) => {
   return (
-    <input
-      type="text"
-      placeholder="Search by name"
-      value={searchValue}
-      onChange={handleSearchChange}
-    />
+    <Formik initialValues={{ search: searchValue }}>
+      {() => (
+        <Form className={styles.form}>
+          <Field
+            className={styles.field}
+            type="text"
+            name="search"
+            placeholder="Search by name"
+            value={searchValue}
+            onChange={handleSearchChange}
+          />
+        </Form>
+      )}
+    </Formik>
   );
 };
 
