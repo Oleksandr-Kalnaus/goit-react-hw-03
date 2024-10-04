@@ -12,8 +12,8 @@ const initialValues = {
 
 const validationSchema = Yup.object({
   name: Yup.string()
-    .min(2, "Name must contain at least 2 characters")
-    .max(20, "Name cannot exceed 20 characters")
+    .min(3, "Name must contain at least 3 characters")
+    .max(50, "Name cannot exceed 50 characters")
     .required("Field name is required"),
   number: Yup.string()
     .matches(/^\d{3}-\d{2}-\d{2}$/, "Phone number must be in format xxx-xx-xx")
