@@ -2,6 +2,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { useId } from "react";
 import * as Yup from "yup";
 import { nanoid } from "nanoid";
+import { IoPersonAddSharp } from "react-icons/io5";
 import styles from "./ContactForm.module.css";
 
 const initialValues = {
@@ -12,7 +13,7 @@ const initialValues = {
 const validationSchema = Yup.object({
   name: Yup.string()
     .min(2, "Name must contain at least 2 characters")
-    .max(30, "Name cannot exceed 30 characters")
+    .max(20, "Name cannot exceed 20 characters")
     .required("Field name is required"),
   number: Yup.string()
     .matches(/^\d{3}-\d{2}-\d{2}$/, "Phone number must be in format xxx-xx-xx")
@@ -41,7 +42,9 @@ const ContactForm = ({ onAddContact }) => {
       validationSchema={validationSchema}
     >
       <Form className={styles.form}>
-        <label htmlFor={nameFieldId}>Name</label>
+        <label htmlFor={nameFieldId} className={styles.name}>
+          Name
+        </label>
         <Field
           className={styles.field}
           type="text"
@@ -50,7 +53,9 @@ const ContactForm = ({ onAddContact }) => {
           placeholder="Name Surname"
         />
         <ErrorMessage className={styles.error} name="name" component="span" />
-        <label htmlFor={numberFieldId}>Number</label>
+        <label htmlFor={numberFieldId} className={styles.name}>
+          Number
+        </label>
         <Field
           className={styles.field}
           type="phone"
@@ -59,8 +64,9 @@ const ContactForm = ({ onAddContact }) => {
           placeholder="XXX-XX-XX"
         />
         <ErrorMessage className={styles.error} name="number" component="span" />
-        <button className={styles.btn} type="submit">
-          Submit
+        <button type="submit" className={styles.addBtn}>
+          <IoPersonAddSharp className={styles.icon} />
+          Add contact
         </button>
       </Form>
     </Formik>

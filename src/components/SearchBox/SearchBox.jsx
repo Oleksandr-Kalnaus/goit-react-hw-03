@@ -7,6 +7,7 @@ const SearchBox = ({ searchValue, handleSearchChange }) => {
     <Formik initialValues={{ search: searchValue }}>
       {() => (
         <Form className={styles.form}>
+          <label>Find contacts by name</label>
           <Field
             className={styles.field}
             type="text"

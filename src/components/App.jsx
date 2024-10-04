@@ -37,7 +37,7 @@ export default function App() {
   };
 
   const filteredContacts = contacts.filter((contact) =>
-    contact.name.toLowerCase().includes(searchValue.toLowerCase())
+    contact.name.toLowerCase().includes(searchValue.toLowerCase().trim())
   );
 
   return (
